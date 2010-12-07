@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  before_filter :login_required, :only => :my_account
+
   def login
     @user = User.new
     @user.name = params[:name]

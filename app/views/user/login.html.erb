@@ -5,8 +5,30 @@
     <% end %>
 <% end %>
 
-<% form_tag :action => 'process_login' do %>
-   Username: <%= text_field "user", "name" %>
-    Password: <%= password_field "user", "password" %>
-  <%= submit_tag %>
-<% end %> 
+<div id="login" class="dynamictable ui-widget-content ui-corner-all ">
+  <div id="heading" class="ui-widget-header ui-corner-all dynamictable-caption dynamictable-caption-block">
+    Dasher login
+  </div>
+
+  <% form_tag :action => 'process_login' do %>
+    <table border="0">
+      <tr>
+        <td rowspan="4" style="padding: 0 1em 0 0;"><img src="/images/logo-80px.png" width="80" /></td>
+        <td>Username</td><td><%= text_field "user", "name", :width => "150px" %></td>
+      </tr>
+      <tr>
+        <td>Password</td><td><%= password_field "user", "password", :width => "150px" %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>Remember me <input type="checkbox" name="_spring_security_remember_me" /></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td><%= submit_tag %></td>
+      </tr>
+    </table>                
+  <% end %>
+</div>
+
+<div id="disclaimer" class="ui-widget-content ui-corner-all">
+  Please report found bugs at the <a href="http://www.google.co.uk">Dasher Bug Tracker</a></p>
+</div>

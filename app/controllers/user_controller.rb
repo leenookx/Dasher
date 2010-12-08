@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  layout 'standard'
   before_filter :login_required, :only => :my_account
 
   def login

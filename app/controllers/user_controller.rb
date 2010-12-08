@@ -33,6 +33,7 @@ class UserController < ApplicationController
       @user = User.new(params[:user])
       @user.password = "password"
       if @user.save
+        flash[:message] = "User #{@user.name} has been registered."
         redirect_to session[:return_to] || '/'
       end
     end

@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name 
   validates_confirmation_of :password, :on => :create
-  validates_length_of :password, :within => 5..40
+  validates_length_of :name, :within => NAME_RANGE
+  validates_length_of :email, :within => EMAIL_RANGE
+  validates_length_of :password, :within => PASSWORD_RANGE
 
   # If a user matching the credentials is found, returns the User object.
   # If no matching user is found, returns nil.

@@ -1,4 +1,18 @@
 class User < ActiveRecord::Base
+  NAME_MIN_LENGTH = 4
+  NAME_MAX_LENGTH = 20
+  EMAIL_MIN_LENGTH = 10
+  EMAIL_MAX_LENGTH = 50
+  PASSWORD_MIN_LENGTH = 4
+  PASSWORD_MAX_LENGTH = 40
+
+  NAME_RANGE = NAME_MIN_LENGTH..NAME_MAX_LENGTH
+  EMAIL_RANGE = EMAIL_MIN_LENGTH..EMAIL_MAX_LENGTH
+  PASSWORD_RANGE = PASSWORD_MIN_LENGTH..PASSWORD_MAX_LENGTH
+
+  NAME_SIZE = 20
+  EMAIL_SIZE = 30
+
   validates_uniqueness_of :name 
   validates_confirmation_of :password, :on => :create
   validates_length_of :password, :within => 5..40

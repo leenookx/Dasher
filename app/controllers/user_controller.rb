@@ -27,6 +27,14 @@ class UserController < ApplicationController
   end
 
   def register
-    @title = "Register"
+    if request.get?
+      @title = "Register"
+    elsif request.post? and params[:user]
+      user = User.new(params[:user])
+      user.password = "password"
+      if user.save
+        redirect_to session[:return_to] || '/'
+      end
+    end
   end
 end 

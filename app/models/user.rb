@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   PASSWORD_RANGE = PASSWORD_MIN_LENGTH..PASSWORD_MAX_LENGTH
 
   NAME_SIZE = 20
+  PASSWORD_SIZE = 20
   EMAIL_SIZE = 30
 
   validates_uniqueness_of :name 

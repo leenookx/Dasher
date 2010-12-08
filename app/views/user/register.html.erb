@@ -1,0 +1,31 @@
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+    <% content_tag :script, :type => "text/javascript" do %>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+
+<div id="register" class="dynamictable ui-widget-content ui-corner-all ">
+  <div id="heading" class="ui-widget-header ui-corner-all dynamictable-caption dynamictable-caption-block">
+    Register with Dasher
+  </div>
+
+  <% form_for :user do |form| %>
+    <table border="0">
+      <tr>
+        <td rowspan="4" style="padding: 0 1em 0 0;"><img src="/images/logo-80px.png" width="80" /></td>
+        <td>Username</td><td><%= text_field "user", "name", :width => "150px" %></td>
+      </tr>
+      <tr>
+        <td>Email</td><td><%= text_field "user", "email", :width => "150px" %></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td><%= submit_tag "Register" %></td>
+      </tr>
+    </table>                
+  <% end %>
+</div>
+
+<div id="disclaimer" class="ui-widget-content ui-corner-all">
+  Please report found bugs at the <a href="http://www.google.co.uk">Dasher Bug Tracker</a></p>
+</div>

@@ -25,4 +25,8 @@ class UserController < ApplicationController
 
   def my_account
   end
+
+  def register
+    @title = "Register"
+  end
 end 

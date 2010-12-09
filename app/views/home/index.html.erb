@@ -1,9 +1,2 @@
-<% flash.each do |key, msg| %>
-    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
-    <% content_tag :script, :type => "text/javascript" do %>
-        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
-    <% end %>
-<% end %>
-
 <p>Welcome to the Dasher homepage.</p>
 <p>I'm sure some more interesting content will be along in a minute.</p>

@@ -12,6 +12,12 @@ charset=iso-8859-1" />
 <%= stylesheet_link_tag "register" %>
 </head>
 <body>
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
+    <% content_tag :script, :type => "text/javascript" do %>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
 <div id="container">
 <div id="header">
 <h1>Dasher</h1>
@@ -21,6 +27,9 @@ charset=iso-8859-1" />
 <%= yield -%>
 </div>
 <div id="sidebar"></div>
+</div>
+<div id="disclaimer" class="ui-widget-content ui-corner-all">
+  Please report found bugs at the <a href="http://github.com/leenookx/Dasher/issues">Dasher Issue Tracker</a></p>
 </div>
 <% if ENV["RAILS_ENV"] == "development" %>
   <%= debug(params) %>

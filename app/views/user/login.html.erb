@@ -1,10 +1,3 @@
-<% flash.each do |key, msg| %>
-    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
-    <% content_tag :script, :type => "text/javascript" do %>
-        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
-    <% end %>
-<% end %>
-
 <div id="login" class="dynamictable ui-widget-content ui-corner-all ">
   <div id="heading" class="ui-widget-header ui-corner-all dynamictable-caption dynamictable-caption-block">
     Dasher login
@@ -33,8 +26,4 @@
   <p>
     Want an account, but not got one? Click <%= link_to "here", :controller => "user", :action => "register" %> now.
   </p>
-</div>
-
-<div id="disclaimer" class="ui-widget-content ui-corner-all">
-  Please report found bugs at the <a href="http://www.google.co.uk">Dasher Bug Tracker</a></p>
 </div>

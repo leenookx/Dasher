@@ -157,7 +157,7 @@ h1 {
   font-size: 30pt;
   font-weight: bold;
   font-style: italic;
-  color: #333;
+  color: white;
 }
 
 h2 {
@@ -182,7 +182,7 @@ h2 > a:hover {
 
 
 h3 {
-  color: #666;
+  color: gold;
   font-size: 1.1em;  
 }
 

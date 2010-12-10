@@ -72,7 +72,7 @@
             <% avatar_filename = 'avatars/' + @user.name + '_thumbnail.png' %>
             <% avatar_filename = File.exists?(File.join(RAILS_ROOT, "public", "images", avatar_filename)) ? avatar_filename : "avatars/empty_avatar_thumbnails.jpg" %>
             <%= link_to image_tag(avatar_filename, :border => 0),
-                        :controller => "user" %></a>
+                        :controller => "user", :action => "my_account" %></a>
           </td>
         </tr>
         </table>

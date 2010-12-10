@@ -12,7 +12,9 @@
 
 <!-- START PAGE HEADER CONTAINER -->
 
-<div id="header">
+<div id="header" class="ui-widget-content ui-corner-all">
+    <h1>Dasher</h1>
+    <h3>Agile management. Simplified</h3>
     <% if !logged_in? %>
       <div id="login-box">
         <p align="right"><%= link_to "Forgotten your password?", :controller => "email", :action => "remind" %></p>
@@ -82,22 +84,17 @@
     <% end %>
 <% end %>
 <div id="container">
-<div id="header">
-<h1>Dasher</h1>
-<h3>Simple Agile Management</h3>
-</div>
 <div id="content">
 <%= yield -%>
-</div>
-<div id="disclaimer" class="ui-widget-content ui-corner-all">
-  Please report found bugs at the <a href="http://github.com/leenookx/Dasher/issues">Dasher Issue Tracker</a></p>
 </div>
 <div id="footer">
 
 		<hr />
 		
-           <%= link_to "Copyright",  { :controller => 'site', :action => 'copyright' }, { :class => "designer", :target => "_blank" } %> 2009-2010 <a href="http://www.purplemonkeys.co.uk" class="designer" target="_blank">Purple Monkeys</a>, all rights reserved.
-
+           <%= link_to "Copyright",  { :controller => 'site', :action => 'copyright' }, { :class => "designer", :target => "_blank" } %> 2010 <a href="http://github.com/leenookx" class="designer" target="_blank">Leenookx</a>, all rights reserved.
+<p>
+Please report any bugs using the <a href="http://github.com/leenookx/Dasher/issues">Dasher Issue Tracker</a>.</p>
+</p>
   <hr/>
 
 		<%= link_to_unless_current "Main",  { :controller => 'site', :action => 'index' }, { :class => "small-navigation" } %>

@@ -3,7 +3,7 @@
     Dasher login
   </div>
 
-  <% form_for :user do |form| %>
+  <% form_for :user, :url => {:controller => "user", :action => "process_login"} do |form| %>
     <table border="0">
       <tr>
         <td rowspan="4" style="padding: 0 1em 0 0;"><img src="/images/logo-80px.png" width="80" /></td>

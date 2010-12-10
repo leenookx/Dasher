@@ -25,7 +25,7 @@
     <% if !logged_in? %>
       <div id="login-box">
         <p align="right"><%= link_to "Forgotten your password?", :controller => "email", :action => "remind" %></p>
-        <% form_for :user, @user, :url => {:controller => "user", :action => "login"} do |f| %>
+        <% form_for :user, @user, :url => {:controller => "user", :action => "process_login"} do |f| %>
           <table align="right">
             <tr>
               <td>
@@ -49,7 +49,7 @@
         <p align="right"></p>
       </div>
     <% else %>
-      <% @user = User.find(session[:user_id]) %>
+      <% @user = User.find(session[:id]) %>
       <div id="empty-login">
         <table align="right">
          <tr>

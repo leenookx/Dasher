@@ -6,7 +6,7 @@ module ApplicationHelper
   # Determines if the user is currently logged in or not
   # #####################################################
   def logged_in?
-    not session[:user_id].nil?
+    not session[:id].nil?
   end
 
   # #####################################################

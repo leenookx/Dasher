@@ -2,13 +2,14 @@ class UserController < ApplicationController
   layout 'standard'
   before_filter :login_required, :only => :my_account
 
+
   # #####################################################
   # 
   # #####################################################
   def login
-    @user = User.new
-    @user.name = params[:name]
+    @title = "Dasher - Login"
   end
+
 
   # #####################################################
   # 
@@ -23,6 +24,7 @@ class UserController < ApplicationController
     end
   end
 
+
   # #####################################################
   # 
   # #####################################################
@@ -32,11 +34,14 @@ class UserController < ApplicationController
     redirect_to :action => 'login'
   end
 
+
   # #####################################################
   # 
   # #####################################################
   def my_account
+    @title = "Dasher - Your account."
   end
+
 
   # #####################################################
   # 

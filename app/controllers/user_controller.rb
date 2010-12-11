@@ -17,6 +17,15 @@ class UserController < ApplicationController
   def process_login
     if user = User.authenticate(params[:user])
       session[:id] = user.id # Remember the user's id during this session
+
+      if @user.remember_me?
+        user.remember!(cookies)
+      else
+        user.forget!(cookies)
+      end
+
+      AuditTrail.create_login_entry(session, request.remote_ip)
+
       redirect_to session[:return_to] || '/'
     else
       flash[:error] = 'Invalid login.'
@@ -29,6 +38,9 @@ class UserController < ApplicationController
   # 
   # #####################################################
   def logout
+    AuditTrail.create_logout_entry(session, request.remote_ip)
+    User.logout!(session, cookies)
+
     reset_session
     flash[:message] = 'Logged out.'
     redirect_to :action => 'login'

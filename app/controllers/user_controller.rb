@@ -15,13 +15,13 @@ class UserController < ApplicationController
   # 
   # #####################################################
   def process_login
-    if user = User.authenticate(params[:user])
-      session[:id] = user.id # Remember the user's id during this session
+    if @user = User.authenticate(params[:user])
+      session[:id] = @user.id # Remember the user's id during this session
 
       if @user.remember_me?
-        user.remember!(cookies)
+        @user.remember!(cookies)
       else
-        user.forget!(cookies)
+        @user.forget!(cookies)
       end
 
       AuditTrail.create_login_entry(session, request.remote_ip)

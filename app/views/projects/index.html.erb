@@ -1,10 +1,11 @@
-<h1>Listing projects</h1>
+<h2>Listing projects</h2>
 
+<% if !@projects.nil? %>
+<% @projects.each do |project| %>
 <table>
   <tr>
   </tr>
 
-<% @projects.each do |project| %>
   <tr>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
@@ -12,6 +13,9 @@
   </tr>
 <% end %>
 </table>
+<% else %>
+  <p>You have no projects currently defined.</p>
+<% end %>
 
 <br />
 

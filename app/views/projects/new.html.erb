@@ -1,11 +1,24 @@
-<h2>New project</h2>
+<div id="new-project" class="dynamictable ui-widget-content ui-corner-all ">
+  <div id="heading" class="ui-widget-header ui-corner-all dynamictable-caption dynamictable-caption-block">
+    Create new project
+  </div>
 
-<% form_for(@project) do |f| %>
+<% form_for :project, :url => {:controller => "projects", :action => "create"} do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+    <table border="0">
+      <tr>
+        <td rowspan="4" style="padding: 0 1em 0 0;"><img src="/images/logo-80px.png" width="80" /></td>
+        <td><label for="name">Name:</label></td><td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td><label for="description">Description:</label></td><td><%= f.text_field :description %></td></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td><%= submit_tag "Create" %></td>
+      </tr>
+    </table>  
 <% end %>
 
 <%= link_to 'Back', projects_path %>
+</div>

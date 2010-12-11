@@ -1,18 +1,17 @@
 <h2>Listing projects</h2>
 
 <% if !@projects.nil? %>
-<% @projects.each do |project| %>
-<table>
-  <tr>
-  </tr>
-
-  <tr>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <table border="0">
+  <% @projects.each do |project| %>
+    <tr>
+      <td rowspan="4" style="padding: 0 1em 0 0;"><img src="/images/logo-80px.png" width="80" /></td>
+      <td><%= project.name %></td>
+    </tr>
+    <tr>
+      <td><%= project.description %></td>
+    </tr>
+  <% end %>
+  </table>
 <% else %>
   <p>You have no projects currently defined.</p>
 <% end %>

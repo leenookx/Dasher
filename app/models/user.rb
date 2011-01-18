@@ -1,6 +1,8 @@
 require 'sha1'
 
 class User < ActiveRecord::Base
+  has_many :ProjectRole
+
   NAME_MIN_LENGTH = 4
   NAME_MAX_LENGTH = 20
   EMAIL_MIN_LENGTH = 10

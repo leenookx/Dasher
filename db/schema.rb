@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101212183218) do
+ActiveRecord::Schema.define(:version => 20110118214434) do
 
   create_table "audit_trails", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(:version => 20101212183218) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "hashed_password"
+  end
+
+  create_table "working_times", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

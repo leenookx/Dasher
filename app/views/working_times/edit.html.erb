@@ -1,0 +1,12 @@
+<h1>Editing working_time</h1>
+
+<% form_for(@working_time) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @working_time %> |
+<%= link_to 'Back', working_times_path %>

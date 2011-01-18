@@ -37,4 +37,11 @@ module ApplicationHelper
 
     return u.admin
   end
+
+  # #####################################################
+  #
+  # #####################################################
+  def site_mode
+    return APP_CONFIG['mode']
+  end
 end

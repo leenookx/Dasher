@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110212075138) do
+ActiveRecord::Schema.define(:version => 20110212080029) do
 
   create_table "activations", :force => true do |t|
     t.string   "code",       :null => false
@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(:version => 20110212075138) do
   end
 
   add_index "invitations", ["code"], :name => "index_invitations_on_code"
-
-  create_table "issues", :force => true do |t|
-    t.string   "title"
-    t.integer  "status_id"
-    t.integer  "assigned_to"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "notes", :force => true do |t|
     t.integer  "story_id"
@@ -114,17 +105,6 @@ ActiveRecord::Schema.define(:version => 20110212075138) do
 
   create_table "statuses", :force => true do |t|
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "stories", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "sprint_id"
-    t.integer  "status_id"
-    t.string   "name"
-    t.string   "description"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

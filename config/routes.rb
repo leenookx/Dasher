@@ -1,4 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :statuses
+
+  map.resources :issues
+
+  map.resources :notes
+
+  map.resources :tasks
+
+  map.resources :stories
+
+  map.resources :sprints
+
   map.resources :project_roles
 
   map.resources :working_times

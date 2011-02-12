@@ -90,6 +90,42 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # #######################################################
+  # Returns all of the tasks associated with the specified
+  # project id.
+  #
+  # GET /projects/tasks/1
+  # GET /projects/tasks/1.xml
+  # GET /projects/tasks/1.json
+  # #######################################################
+  def tasks
+    user = validate_user( request.headers["authentication-token"] )
+    if user.nil?
+      respond_to do |format|
+        format.html do
+          flash[:error] = 'Not authenticated.'
+          redirect_to root_url
+        end
+
+        format.xml { render :xml => { :status => :error, :message => 'Invalid authentication code.'}.to_xml, :status => 403 }
+
+        format.json { render :json => { :status => :error, :message => 'Invalid authentication code.'}.to_json, :status => 403 }
+      end
+    else
+      projects = Task.find_all_by_project_id( params[:id] )
+      if projects
+        respond_to do |format|
+          format.html {     
+            @title = "Dasher - Your Projects"
+            @projects = Project.find_all_by_owner(@user.id)
+          }
+          format.xml  { render :xml => projects.to_xml( :only => [:project_id, :id, :description] ) }
+          format.json { render :json => projects.to_json( :only => [:project_id, :id, :description] ) }
+        end
+      end
+    end
+  end
+
 private
 
   # #####################################################

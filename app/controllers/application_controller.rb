@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_user
 
 protected
+
   def set_user
     @user = User.find(session[:id]) if @user.nil? && session[:id]
   end

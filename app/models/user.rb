@@ -1,7 +1,9 @@
 require 'sha1'
 
 class User < ActiveRecord::Base
+  include ApplicationHelper
   has_many :ProjectRole
+  has_one :activation, :dependent => :destroy
 
   NAME_MIN_LENGTH = 4
   NAME_MAX_LENGTH = 20
@@ -10,19 +12,34 @@ class User < ActiveRecord::Base
   PASSWORD_MIN_LENGTH = 4
   PASSWORD_MAX_LENGTH = 40
 
+  FORENAME_MIN_LENGTH = 2
+  FORENAME_MAX_LENGTH = 20
+  SURNAME_MIN_LENGTH = 4
+  SURNAME_MAX_LENGTH = 20
+
   NAME_RANGE = NAME_MIN_LENGTH..NAME_MAX_LENGTH
   EMAIL_RANGE = EMAIL_MIN_LENGTH..EMAIL_MAX_LENGTH
   PASSWORD_RANGE = PASSWORD_MIN_LENGTH..PASSWORD_MAX_LENGTH
+  FORENAME_RANGE = FORENAME_MIN_LENGTH..FORENAME_MAX_LENGTH
+  SURNAME_RANGE = SURNAME_MIN_LENGTH..SURNAME_MAX_LENGTH
 
   NAME_SIZE = 20
   PASSWORD_SIZE = 20
   EMAIL_SIZE = 30
+  FORENAME_SIZE = 20
+  SURNAME_SIZE = 20
+
+  STATUS_AWAITING_VALIDATION = 0
+  STATUS_OK = 1
+  STATUS_DISABLED = 2
 
   validates_uniqueness_of :name 
   validates_confirmation_of :password, :on => :create, :if =>lambda { |user| user.new_record? or not user.password.blank? }
   validates_length_of :name, :within => NAME_RANGE
   validates_length_of :email, :within => EMAIL_RANGE
   validates_length_of :password, :within => PASSWORD_RANGE, :if =>lambda { |user| user.new_record? or not user.password.blank? }
+  validates_length_of :forename, :within => FORENAME_RANGE
+  validates_length_of :surname, :within => SURNAME_RANGE
 
   validates_format_of     :name,
                           :with => /^[A-Z0-9_]*$/i,
@@ -38,6 +55,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_protected :password
 
+  attr_accessor :password_confirm
+
   # #####################################################
   #
   # #####################################################
@@ -49,10 +68,11 @@ class User < ActiveRecord::Base
   # If a user matching the credentials is found, returns the User object.
   # If no matching user is found, returns nil.
   # #####################################################
-  def self.authenticate(user_info)
-    user = find_by_name(user_info[:name])
-    if user && user.hashed_password == hashed(user_info[:password])
-      return user
+  def authenticate?(user_info)
+    if status == User::STATUS_OK 
+      if hashed_password == User::hashed(user_info[:password])
+        return true
+      end
     end
   end
 
@@ -117,12 +137,83 @@ class User < ActiveRecord::Base
     remember_me == "1"
   end
 
- private
-  before_save :update_password
+  # ##################################################################
+  #
+  # ##################################################################
+  def self.FindByName(user_info)
+    user = find_by_name(user_info[:name])
+  end
 
+  # ##################################################################
+  #
+  # ##################################################################
+  def avatar
+    Avatar.new(self)
+  end
+
+  # ##################################################################
+  # Invite someone to join this site
+  # ##################################################################
+  def invite?(email_address, ip)
+    invitation = Invitation.new
+    invitation.email = email_address
+    if (self.invitation_limit > 0) && invitation
+      invitation.user_id = self.id
+      if invitation.save
+        self.invitation_limit -= 1
+        self.save
+
+        # Send out the invite at this point...
+        Delayed::Job.enqueue( UserInviteJob.new(self.id, ip) )
+
+        # Create a friendship link between the two users.
+        friend = Friend.new
+        friend.from = invitation.user_id
+        friend.to = self.id
+        friend.save
+
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
+ private
+
+  before_save :update_password
+  before_save :check_invites
+  before_save :generate_authentication_code
+
+  # ##################################################################
+  #
+  # ##################################################################
   def update_password
     if not password.blank?
       self.hashed_password = self.class.hashed(password)
+
+      # When we change the password, we're also going to force a change of the authentication_code
+      generate_authentication_code
+    end
+  end
+
+  # ##################################################################
+  #
+  # ##################################################################
+  def check_invites
+    if invitation_limit.blank?
+      self.invitation_limit = 5
+    end
+  end
+
+  # ##################################################################
+  #
+  # ##################################################################
+  def generate_authentication_code
+    if self.authentication_code.blank?
+      self.authentication_code = generate_unique_code
     end
   end
 end 

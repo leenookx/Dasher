@@ -94,12 +94,15 @@ class ProjectsController < ApplicationController
         format.json { render :json => { :status => :error, :message => 'Invalid authentication code.'}.to_json, :status => 403 }
       end
     else
-      projects = Project.find_all_by_owner( user.id )
-      if projects
-        respond_to do |format|
-          format.html
-          format.xml  { render :xml => link.errors, :status => :unprocessable_entity }
-          format.json { render :json => link.errors, :status => :unprocessable_entity }
+      @project = Project.find( session[:id] )
+      if @project
+        if @project.owner = @user.id
+          respond_to do |format|
+            format.html
+            format.xml  { render :xml => link.errors, :status => :unprocessable_entity }
+            format.json { render :json => link.errors, :status => :unprocessable_entity }
+          end
+        else
         end
       end
     end

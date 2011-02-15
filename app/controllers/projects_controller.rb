@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
       projects = Project.find_all_by_owner( user.id )
       if projects
         respond_to do |format|
-          format.html { render :action => "new" }
+          format.html
           format.xml  { render :xml => link.errors, :status => :unprocessable_entity }
           format.json { render :json => link.errors, :status => :unprocessable_entity }
         end

@@ -1,21 +1,39 @@
-<h2>Listing projects</h2>
+<h2>Your projects</h2>
 
+<div id="projects">
 <% if !@projects.nil? %>
-  <table border="0">
   <% @projects.each do |project| %>
-    <tr>
-      <td rowspan="4" style="padding: 0 1em 0 0;"><% if project.image.nil? %><%= image_tag "projects/_no_image.jpg", :width => "80" %><% else %><% filename = "projects/" + project.image %><%= image_tag filename, :width => "80" %><% end %></td>
-      <td><%= project.name %></td>
-    </tr>
-    <tr>
-      <td><%= project.description %></td>
-    </tr>
+    <table width="100%" cellspacing="2" cellpadding="2" align="left" border="0">
+      <tr>
+        <td width="90">
+          <% if project.image.nil? %>
+            <%= image_tag "projects/_no_image.jpg", :width => "80" %>
+          <% else %>
+            <% filename = "projects/" + project.image %>
+            <%= image_tag filename, :width => "80" %>
+          <% end %>
+        </td>
+        <td>
+          <table cellspacing="2" cellpadding="2" align="left" border="0">
+            <tr>
+              <td>
+                <%= link_to "#{project.name}", project %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= project.description %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   <% end %>
-  </table>
 <% else %>
   <p>You have no projects currently defined.</p>
 <% end %>
-
+</div>
 <br />
 
-<%= link_to 'New project', new_project_path %>
+<%= link_to 'Create a new project', new_project_path %>

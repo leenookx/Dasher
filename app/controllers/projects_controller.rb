@@ -44,15 +44,30 @@ class ProjectsController < ApplicationController
 
 
   # #####################################################
-  #
+  # Create a new project in the database
   # #####################################################
   def create
     if request.post? and params[:project]
-      @project = Project.new(params[:project])
-      @project.owner = @user.id
-      @project.save
+      project = Project.new(params[:project])
+      project.owner = @user.id
+      project.save
 
-      flash[:message] = "Project '#{@project.name}' has been registered."
+      sprint = project.sprints.build
+      sprint.name = "Backlog"
+      sprint.status_id = 0
+      sprint.created_by = @user.id
+      sprint.save
+
+      task = project.tasks.build
+      task.name = "General"
+      task.description = "General Work"
+      task.type_id = 0
+      task.sprint_id = sprint.id
+      task.created_by = @user.id
+      task.assigned_to = @user.id
+      task.save
+
+      flash[:message] = "Project '#{project.name}' has been registered."
     else
       flash[:error] = "No project data provided."
     end

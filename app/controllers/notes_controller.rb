@@ -1,6 +1,9 @@
 class NotesController < ApplicationController
+
+  # #####################################################
   # GET /notes
   # GET /notes.xml
+  # #####################################################
   def index
     @notes = Note.all
 
@@ -10,8 +13,10 @@ class NotesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /notes/1
   # GET /notes/1.xml
+  # #####################################################
   def show
     @note = Note.find(params[:id])
 
@@ -21,8 +26,10 @@ class NotesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /notes/new
   # GET /notes/new.xml
+  # #####################################################
   def new
     @note = Note.new
 
@@ -32,13 +39,17 @@ class NotesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /notes/1/edit
+  # #####################################################
   def edit
     @note = Note.find(params[:id])
   end
 
+  # #####################################################
   # POST /notes
   # POST /notes.xml
+  # #####################################################
   def create
     @note = Note.new(params[:note])
 
@@ -53,8 +64,10 @@ class NotesController < ApplicationController
     end
   end
 
+  # #####################################################
   # PUT /notes/1
   # PUT /notes/1.xml
+  # #####################################################
   def update
 #    @note = Note.find(params[:id])
 #
@@ -69,8 +82,10 @@ class NotesController < ApplicationController
 #    end
   end
 
+  # #####################################################
   # DELETE /notes/1
   # DELETE /notes/1.xml
+  # #####################################################
   def destroy
 #    @note = Note.find(params[:id])
 #    @note.destroy

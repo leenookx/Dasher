@@ -1,6 +1,9 @@
 class ProjectRolesController < ApplicationController
+
+  # #####################################################
   # GET /project_roles
   # GET /project_roles.xml
+  # #####################################################
   def index
     @project_roles = ProjectRole.all
 
@@ -10,8 +13,10 @@ class ProjectRolesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /project_roles/1
   # GET /project_roles/1.xml
+  # #####################################################
   def show
     @project_role = ProjectRole.find(params[:id])
 
@@ -21,8 +26,10 @@ class ProjectRolesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /project_roles/new
   # GET /project_roles/new.xml
+  # #####################################################
   def new
     @project_role = ProjectRole.new
 
@@ -32,13 +39,17 @@ class ProjectRolesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /project_roles/1/edit
+  # #####################################################
   def edit
     @project_role = ProjectRole.find(params[:id])
   end
 
+  # #####################################################
   # POST /project_roles
   # POST /project_roles.xml
+  # #####################################################
   def create
     @project_role = ProjectRole.new(params[:project_role])
 
@@ -53,8 +64,10 @@ class ProjectRolesController < ApplicationController
     end
   end
 
+  # #####################################################
   # PUT /project_roles/1
   # PUT /project_roles/1.xml
+  # #####################################################
   def update
 #    @project_role = ProjectRole.find(params[:id])
 #
@@ -69,8 +82,10 @@ class ProjectRolesController < ApplicationController
 #    end
   end
 
+  # #####################################################
   # DELETE /project_roles/1
   # DELETE /project_roles/1.xml
+  # #####################################################
   def destroy
 #    @project_role = ProjectRole.find(params[:id])
 #    @project_role.destroy

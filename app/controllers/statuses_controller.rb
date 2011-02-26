@@ -1,6 +1,9 @@
 class StatusesController < ApplicationController
+
+  # #####################################################
   # GET /statuses
   # GET /statuses.xml
+  # #####################################################
   def index
     @statuses = Status.all
 
@@ -10,8 +13,10 @@ class StatusesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /statuses/1
   # GET /statuses/1.xml
+  # #####################################################
   def show
     @status = Status.find(params[:id])
 
@@ -21,8 +26,10 @@ class StatusesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /statuses/new
   # GET /statuses/new.xml
+  # #####################################################
   def new
     @status = Status.new
 
@@ -32,13 +39,17 @@ class StatusesController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /statuses/1/edit
+  # #####################################################
   def edit
     @status = Status.find(params[:id])
   end
 
+  # #####################################################
   # POST /statuses
   # POST /statuses.xml
+  # #####################################################
   def create
     @status = Status.new(params[:status])
 
@@ -53,8 +64,10 @@ class StatusesController < ApplicationController
     end
   end
 
+  # #####################################################
   # PUT /statuses/1
   # PUT /statuses/1.xml
+  # #####################################################
   def update
 #    @status = Status.find(params[:id])
 #
@@ -69,8 +82,10 @@ class StatusesController < ApplicationController
 #    end
   end
 
+  # #####################################################
   # DELETE /statuses/1
   # DELETE /statuses/1.xml
+  # #####################################################
   def destroy
 #    @status = Status.find(params[:id])
 #    @status.destroy

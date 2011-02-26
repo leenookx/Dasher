@@ -3,6 +3,9 @@ class HomeController < ApplicationController
 
   include ApplicationHelper
 
+  # #####################################################
+  # 
+  # #####################################################
   def index
     @title = "Dasher - Agile management. Simplified."
   end

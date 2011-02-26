@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
+
+  # #####################################################
   # GET /tasks
   # GET /tasks.xml
+  # #####################################################
   def index
     @tasks = Task.all
 
@@ -10,8 +13,10 @@ class TasksController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /tasks/1
   # GET /tasks/1.xml
+  # #####################################################
   def show
     @task = Task.find(params[:id])
 
@@ -21,8 +26,10 @@ class TasksController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /tasks/new
   # GET /tasks/new.xml
+  # #####################################################
   def new
     @task = Task.new
 
@@ -32,13 +39,17 @@ class TasksController < ApplicationController
     end
   end
 
+  # #####################################################
   # GET /tasks/1/edit
+  # #####################################################
   def edit
     @task = Task.find(params[:id])
   end
 
+  # #####################################################
   # POST /tasks
   # POST /tasks.xml
+  # #####################################################
   def create
     @task = Task.new(params[:task])
 
@@ -53,8 +64,10 @@ class TasksController < ApplicationController
     end
   end
 
+  # #####################################################
   # PUT /tasks/1
   # PUT /tasks/1.xml
+  # #####################################################
   def update
 #    @task = Task.find(params[:id])
 #
@@ -69,8 +82,10 @@ class TasksController < ApplicationController
 #    end
   end
 
+  # #####################################################
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
+  # #####################################################
   def destroy
 #    @task = Task.find(params[:id])
 #    @task.destroy

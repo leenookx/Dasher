@@ -56,28 +56,28 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.xml
   def update
-    @note = Note.find(params[:id])
-
-    respond_to do |format|
-      if @note.update_attributes(params[:note])
-        format.html { redirect_to(@note, :notice => 'Note was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
-      end
-    end
+#    @note = Note.find(params[:id])
+#
+#    respond_to do |format|
+#      if @note.update_attributes(params[:note])
+#        format.html { redirect_to(@note, :notice => 'Note was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /notes/1
   # DELETE /notes/1.xml
   def destroy
-    @note = Note.find(params[:id])
-    @note.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(notes_url) }
-      format.xml  { head :ok }
-    end
+#    @note = Note.find(params[:id])
+#    @note.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(notes_url) }
+#      format.xml  { head :ok }
+#    end
   end
 end

@@ -98,17 +98,17 @@ class WorkingTimesController < ApplicationController
   # PUT /working_times/1.xml
   # #####################################################
   def update
-    @working_time = WorkingTime.find(params[:id])
-
-    respond_to do |format|
-      if @working_time.update_attributes(params[:working_time])
-        format.html { redirect_to(@working_time, :notice => 'WorkingTime was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @working_time.errors, :status => :unprocessable_entity }
-      end
-    end
+#    @working_time = WorkingTime.find(params[:id])
+#
+#    respond_to do |format|
+#      if @working_time.update_attributes(params[:working_time])
+#        format.html { redirect_to(@working_time, :notice => 'WorkingTime was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @working_time.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
 
@@ -117,13 +117,13 @@ class WorkingTimesController < ApplicationController
   # DELETE /working_times/1.xml
   # #####################################################
   def destroy
-    @working_time = WorkingTime.find(params[:id])
-    @working_time.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(working_times_url) }
-      format.xml  { head :ok }
-    end
+#    @working_time = WorkingTime.find(params[:id])
+#    @working_time.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(working_times_url) }
+#      format.xml  { head :ok }
+#    end
   end
 
 

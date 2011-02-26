@@ -56,28 +56,28 @@ class ProjectRolesController < ApplicationController
   # PUT /project_roles/1
   # PUT /project_roles/1.xml
   def update
-    @project_role = ProjectRole.find(params[:id])
-
-    respond_to do |format|
-      if @project_role.update_attributes(params[:project_role])
-        format.html { redirect_to(@project_role, :notice => 'ProjectRole was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @project_role.errors, :status => :unprocessable_entity }
-      end
-    end
+#    @project_role = ProjectRole.find(params[:id])
+#
+#    respond_to do |format|
+#      if @project_role.update_attributes(params[:project_role])
+#        format.html { redirect_to(@project_role, :notice => 'ProjectRole was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @project_role.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /project_roles/1
   # DELETE /project_roles/1.xml
   def destroy
-    @project_role = ProjectRole.find(params[:id])
-    @project_role.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(project_roles_url) }
-      format.xml  { head :ok }
-    end
+#    @project_role = ProjectRole.find(params[:id])
+#    @project_role.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(project_roles_url) }
+#      format.xml  { head :ok }
+#    end
   end
 end

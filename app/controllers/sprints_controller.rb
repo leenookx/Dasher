@@ -56,28 +56,28 @@ class SprintsController < ApplicationController
   # PUT /sprints/1
   # PUT /sprints/1.xml
   def update
-    @sprint = Sprint.find(params[:id])
-
-    respond_to do |format|
-      if @sprint.update_attributes(params[:sprint])
-        format.html { redirect_to(@sprint, :notice => 'Sprint was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sprint.errors, :status => :unprocessable_entity }
-      end
-    end
+#    @sprint = Sprint.find(params[:id])
+#
+#    respond_to do |format|
+#      if @sprint.update_attributes(params[:sprint])
+#        format.html { redirect_to(@sprint, :notice => 'Sprint was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @sprint.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /sprints/1
   # DELETE /sprints/1.xml
   def destroy
-    @sprint = Sprint.find(params[:id])
-    @sprint.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(sprints_url) }
-      format.xml  { head :ok }
-    end
+#    @sprint = Sprint.find(params[:id])
+#    @sprint.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(sprints_url) }
+#      format.xml  { head :ok }
+#    end
   end
 end

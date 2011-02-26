@@ -56,28 +56,28 @@ class StatusesController < ApplicationController
   # PUT /statuses/1
   # PUT /statuses/1.xml
   def update
-    @status = Status.find(params[:id])
-
-    respond_to do |format|
-      if @status.update_attributes(params[:status])
-        format.html { redirect_to(@status, :notice => 'Status was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @status.errors, :status => :unprocessable_entity }
-      end
-    end
+#    @status = Status.find(params[:id])
+#
+#    respond_to do |format|
+#      if @status.update_attributes(params[:status])
+#        format.html { redirect_to(@status, :notice => 'Status was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @status.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /statuses/1
   # DELETE /statuses/1.xml
   def destroy
-    @status = Status.find(params[:id])
-    @status.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(statuses_url) }
-      format.xml  { head :ok }
-    end
+#    @status = Status.find(params[:id])
+#    @status.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(statuses_url) }
+#      format.xml  { head :ok }
+#    end
   end
 end
